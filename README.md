@@ -1,0 +1,1 @@
+This is a project for CIS-486 practicing using Git and Github together
