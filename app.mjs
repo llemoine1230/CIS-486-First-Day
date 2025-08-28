@@ -1,12 +1,14 @@
 import express from 'express'
-// import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const app = express()
-
 const PORT = process.env.PORT || 3000;
+//const path = require('path');
 
-const path = require('path');
-
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.send('Hello Express from Render 😍😍😍. <a href="laura">laura</a>')
@@ -16,10 +18,13 @@ app.get('/', (req, res) => {
 // send an html file
 
 app.get('/laura', (req, res) => {
-  res.send('laura. <a href="/">home</a>')
-  res.sendFile('laura.html');
+  res.sendFile(join(__dirname, 'public', 'laura.html'))
 })
-
+app.get('/api/laura', (req, res) => {
+  // res.send('barry. <a href="/">home</a>')
+  const myVar = 'Hello from server!';
+  res.json({ myVar });
+})
 app.listen(3000)
 //Push #1 testing
 // TODO: refactor to use the environment port.
