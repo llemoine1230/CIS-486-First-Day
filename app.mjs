@@ -11,6 +11,7 @@ const __dirname = dirname(__filename);
 const app = express()
 const PORT = process.env.PORT || 3000;
 const uri = process.env.MONGO_URI;
+console.log()
 
 
 app.use(express.static(join(__dirname, 'public')));
